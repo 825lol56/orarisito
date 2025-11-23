@@ -4,55 +4,68 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Transit Timetables</title>
+
+    <!-- Styles -->
     <link rel="stylesheet" href="style.css">
+
+    <!-- Single universal favicon -->
     <link rel="icon" type="image/png" href="favicon.png">
     <link rel="apple-touch-icon" href="favicon.png">
-    <meta name="theme-color" content="#f5f6fa">
+    <meta name="theme-color" content="#eaeffc">
 </head>
+
 <body>
 
     <header>
         <h1>Transit Timetables</h1>
-        <p>Shortcut links to local transportation schedules</p>
+        <p class="subtitle">Quick access to local transportation schedules</p>
     </header>
 
     <main>
-        <ul class="button-list">
+        <div class="card">
 
-            <!-- TRENI NAPOLI → SORRENTO -->
-            <li>
-                <a class="image-btn" href="https://www.sorrentoinsider.com/it/orari-vesuviana-napoli-sorrento?route=napoli_sorrento" target="_blank">
-                    <img src="vesuviana1.png" alt="Treni Napoli Sorrento">
-                </a>
-                <p class="label">Treni Napoli → Sorrento</p>
-            </li>
+            <ul class="button-list">
 
-            <!-- TRENI SORRENTO → NAPOLI -->
-            <li>
-                <a class="image-btn" href="https://www.sorrentoinsider.com/it/orari-vesuviana-napoli-sorrento?route=sorrento_napoli" target="_blank">
-                    <img src="vesuviana2.png" alt="Treni Sorrento Napoli">
-                </a>
-                <p class="label">Treni Sorrento → Napoli</p>
-            </li>
-            
-            <!-- BUS VICO EQUENSE -->
-            <li>
-                <a class="image-btn" href="https://www.eavsrl.it/download/009-circolari-vico-equense-in-vigore-dal-3-112025/?wpdmdl=35800&refresh=69221d06e49171763843334" target="_blank">
-                    <img src="busvico.png" alt="Bus Vico Equense">
-                </a>
-                <p class="label">Bus Vico Equense</p>
-            </li>
+                <!-- TRENI NAPOLI → SORRENTO -->
+                <li>
+                    <a class="image-btn" href="https://www.sorrentoinsider.com/it/orari-vesuviana-napoli-sorrento?route=napoli_sorrento" target="_blank">
+                        <img src="vesuviana1.png" alt="Treni Napoli Sorrento">
+                    </a>
+                    <p class="label">Treni Napoli → Sorrento</p>
+                </li>
 
-            <!-- BUS NOTTURNI -->
-            <li>
-                <a class="image-btn" href="https://www.eavsrl.it/download/supporto-treni-circumvesuviana-sorrento-napoli-in-vigore-dal-10-marzo-2025" target="_blank">
-                    <img src="busnotturno.png" alt="Bus Notturni">
-                </a>
-                <p class="label">Bus Notturni Nap ↔ Sorr</p>
-            </li>
+                <!-- TRENI SORRENTO → NAPOLI -->
+                <li>
+                    <a class="image-btn" href="https://www.sorrentoinsider.com/it/orari-vesuviana-napoli-sorrento?route=sorrento_napoli" target="_blank">
+                        <img src="vesuviana2.png" alt="Treni Sorrento Napoli">
+                    </a>
+                    <p class="label">Treni Sorrento → Napoli</p>
+                </li>
 
-        </ul>
+                <!-- BUS VICO EQUENSE -->
+                <li>
+                    <a class="image-btn" href="https://www.eavsrl.it/download/009-circolari-vico-equense-in-vigore-dal-3-112025/?wpdmdl=35800&refresh=69221d06e49171763843334" target="_blank">
+                        <img src="busvico.png" alt="Bus Vico Equense">
+                    </a>
+                    <p class="label">Bus Vico Equense</p>
+                </li>
+
+                <!-- BUS NOTTURNI -->
+                <li>
+                    <a class="image-btn" href="https://www.eavsrl.it/download/supporto-treni-circumvesuviana-sorrento-napoli-in-vigore-dal-10-marzo-2025" target="_blank">
+                        <img src="busnotturno.png" alt="Bus Notturni">
+                    </a>
+                    <p class="label">Bus Notturni Nap ↔ Sorr</p>
+                </li>
+
+            </ul>
+
+        </div>
     </main>
+
+    <footer>
+        <p>© 2025 Transit Timetables</p>
+    </footer>
 
     <script src="script.js"></script>
 </body>
