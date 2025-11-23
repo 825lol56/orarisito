@@ -1,74 +1,65 @@
-/* General page setup */
+/* Base styling */
 body {
     margin: 0;
     padding: 0;
     font-family: "Inter", Arial, sans-serif;
-    background: #f6f7fb;
+    background: #f5f6fa;
     color: #222;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-/* Header section */
+/* Header */
 header {
     text-align: center;
-    margin-top: 50px;
-    margin-bottom: 30px;
+    margin-top: 40px;
+    margin-bottom: 25px;
 }
 
 header h1 {
-    font-size: 2.2rem;
+    font-size: 2rem;
     margin: 0;
-    color: #1a1a1a;
 }
 
 header p {
-    font-size: 1rem;
-    color: #444;
-    margin-top: 8px;
+    margin-top: 6px;
+    color: #555;
 }
 
-/* Grid for buttons */
-.button-grid {
+/* Button list */
+.button-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 auto;
+    max-width: 420px;
     width: 90%;
-    max-width: 600px;
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 15px;
 }
 
-/* Buttons */
-.tt-btn {
-    display: block;
-    width: 100%;
-    padding: 18px;
-    background: white;
-    border-radius: 10px;
+.button-list li {
+    margin: 30px 0;
     text-align: center;
-    text-decoration: none;
+}
+
+/* Image button */
+.image-btn img {
+    width: 100%;
+    max-width: 300px;
+    border-radius: 14px;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.18);
+    transition: 0.25s ease;
+}
+
+/* Hover effect */
+.image-btn img:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+}
+
+/* Label under images */
+.label {
+    margin-top: 12px;
     font-size: 1.1rem;
-    color: #1a1a1a;
-    border: 1px solid #ddd;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.07);
-    transition: 0.2s ease;
-}
-
-/* Hover & active behavior */
-.tt-btn:hover {
-    background: #eef1ff;
-    border-color: #b4bffd;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.12);
-}
-
-.tt-btn:active {
-    transform: scale(0.98);
-}
-
-/* Responsive design */
-@media (min-width: 600px) {
-    .button-grid {
-        grid-template-columns: 1fr 1fr;
-    }
+    color: #222;
+    font-weight: 500;
 }
