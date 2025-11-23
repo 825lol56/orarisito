@@ -3,36 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Orari</title>
+    <title>Transit Timetables</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <header>
-        <h1>Orari</h1>
+        <h1>Transit Timetables</h1>
         <p>Shortcut links to local transportation schedules</p>
     </header>
 
     <main>
-        <div class="button-grid">
+        <ul class="button-list">
 
-            <a class="tt-btn" href="https://www.eavsrl.it/download/009-circolari-vico-equense-in-vigore-dal-3-112025/?wpdmdl=35800&refresh=69221d06e49171763843334" target="_blank">
-                Bus Vico Equense
-            </a>
+            <!-- BUS VICO EQUENSE -->
+            <li>
+                <a class="image-btn" href="https://www.eavsrl.it/download/009-circolari-vico-equense-in-vigore-dal-3-112025/?wpdmdl=35800&refresh=69221d06e49171763843334" target="_blank">
+                    <img src="bus.png" alt="Bus Vico Equense">
+                </a>
+                <p class="label">Bus Vico Equense</p>
+            </li>
 
-            <a class="tt-btn" href="https://www.sorrentoinsider.com/it/orari-vesuviana-napoli-sorrento?route=napoli_sorrento" target="_blank">
-                Treni Napoli → Sorrento
-            </a>
+            <!-- TRENI NAPOLI → SORRENTO -->
+            <li>
+                <a class="image-btn" href="https://www.sorrentoinsider.com/it/orari-vesuviana-napoli-sorrento?route=napoli_sorrento" target="_blank">
+                    <img src="train1.png" alt="Treni Napoli Sorrento">
+                </a>
+                <p class="label">Treni Napoli → Sorrento</p>
+            </li>
 
-            <a class="tt-btn" href="https://www.sorrentoinsider.com/it/orari-vesuviana-napoli-sorrento?route=sorrento_napoli" target="_blank">
-                Treni Sorrento → Napoli
-            </a>
+            <!-- TRENI SORRENTO → NAPOLI -->
+            <li>
+                <a class="image-btn" href="https://www.sorrentoinsider.com/it/orari-vesuviana-napoli-sorrento?route=sorrento_napoli" target="_blank">
+                    <img src="train2.png" alt="Treni Sorrento Napoli">
+                </a>
+                <p class="label">Treni Sorrento → Napoli</p>
+            </li>
 
-            <a class="tt-btn" href="https://www.eavsrl.it/download/supporto-treni-circumvesuviana-sorrento-napoli-in-vigore-dal-10-marzo-2025" target="_blank">
-                Bus Notturni Nap ↔ Sorr
-            </a>
+            <!-- BUS NOTTURNI -->
+            <li>
+                <a class="image-btn" href="https://www.eavsrl.it/download/supporto-treni-circumvesuviana-sorrento-napoli-in-vigore-dal-10-marzo-2025" target="_blank">
+                    <img src="nightbus.png" alt="Bus Notturni">
+                </a>
+                <p class="label">Bus Notturni Nap ↔ Sorr</p>
+            </li>
 
-        </div>
+        </ul>
     </main>
 
     <script src="script.js"></script>
