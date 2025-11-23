@@ -1,10 +1,10 @@
-// Adds a quick shrinking tap animation on mobile
-document.querySelectorAll(".tt-btn").forEach(btn => {
-    btn.addEventListener("touchstart", () => {
-        btn.style.transform = "scale(0.97)";
+// Small tap animation for mobile
+document.querySelectorAll(".image-btn img").forEach(img => {
+    img.addEventListener("touchstart", () => {
+        img.style.transform = "scale(0.96)";
     });
 
-    btn.addEventListener("touchend", () => {
-        btn.style.transform = "scale(1)";
+    img.addEventListener("touchend", () => {
+        img.style.transform = "scale(1)";
     });
 });
