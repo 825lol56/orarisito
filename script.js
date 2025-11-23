@@ -1,4 +1,4 @@
-// Small tap animation for mobile
+// Tiny mobile tap animation
 document.querySelectorAll(".image-btn img").forEach(img => {
     img.addEventListener("touchstart", () => {
         img.style.transform = "scale(0.96)";
