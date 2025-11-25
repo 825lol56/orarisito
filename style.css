@@ -5,7 +5,7 @@ body {
     padding-bottom: 90px;
 }
 
-/* Header Banner */
+/* HEADER BANNER */
 .top-banner {
     text-align: center;
     padding: 30px 15px;
@@ -21,34 +21,47 @@ body {
     opacity: 0.9;
 }
 
-/* Image Button List */
+/* BUTTON GRID (IMPROVED FOR DESKTOP) */
 .button-list {
     list-style: none;
     padding: 20px;
     display: grid;
     gap: 30px;
+    justify-content: center;
 }
-.button-list li {
-    text-align: center;
+
+@media (min-width: 700px) {
+    .button-list {
+        grid-template-columns: repeat(2, 300px);
+    }
 }
+
+.card {
+    background: white;
+    padding: 15px;
+    border-radius: 16px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+}
+
+/* IMAGE BUTTONS */
 .image-btn img {
-    width: 180px;
-    height: auto;
+    width: 100%;
     border-radius: 14px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
     transition: 0.2s;
 }
 .image-btn img:hover {
     transform: scale(1.03);
 }
 
-/* Labels */
+/* LABELS */
 .label {
-    margin-top: 8px;
+    margin-top: 10px;
+    font-size: 17px;
+    text-align: center;
     font-weight: bold;
 }
 
-/* FIXED BANNER AT BOTTOM */
+/* FIXED BOTTOM BANNER */
 .bottom-banner {
     position: fixed;
     bottom: 0;
@@ -66,8 +79,7 @@ body {
     padding: 5px;
 }
 .icon-btn img {
-    width: 35px;
-    height: 35px;
+    width: 32px;
 }
 
 /* POPUP */
@@ -88,7 +100,6 @@ body {
     max-width: 300px;
     text-align: center;
     border-radius: 12px;
-    box-shadow: 0 4px 14px rgba(0,0,0,0.25);
     display: none;
 }
 .close-btn {
@@ -100,7 +111,7 @@ body {
     border-radius: 8px;
 }
 
-/* INSTALL MENU */
+/* INSTALL MENU HIDDEN BY DEFAULT */
 .install-menu {
     position: fixed;
     bottom: 90px;
@@ -120,4 +131,11 @@ body {
     background: #6b2fa3;
     color: white;
     border-radius: 8px;
+}
+
+/* DARK MODE PLACEHOLDER ICON FIX */
+@media (prefers-color-scheme: dark) {
+    .placeholder-icon {
+        filter: brightness(0) invert(1);
+    }
 }

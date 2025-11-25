@@ -5,24 +5,12 @@ window.addEventListener("beforeinstallprompt", (e) => {
     deferredPrompt = e;
 });
 
-// OPEN EXTERNAL LINK
+/* External link */
 function openExternalLink(url) {
     window.open(url, "_blank");
 }
 
-// POPUP FUNCTIONS
-function openSuggestionsPopup() {
-    showPopup("Funzione suggerimenti disponibile presto!");
-}
-
-function openLoginPopup() {
-    showPopup("Login in arrivo!");
-}
-
-function openPlaceholderPopup() {
-    showPopup("Funzione in sviluppo!");
-}
-
+/* POPUPS */
 function showPopup(text) {
     document.getElementById("popup-text").innerText = text;
     document.getElementById("popup-overlay").style.display = "block";
@@ -34,7 +22,15 @@ function closePopup() {
     document.getElementById("popup-box").style.display = "none";
 }
 
-// INSTALL MENU
+function openSuggestionsPopup() {
+    showPopup("Funzione suggerimenti disponibile presto!");
+}
+
+function openLoginPopup() {
+    showPopup("Login in arrivo!");
+}
+
+/* INSTALL MENU */
 function openInstallMenu() {
     document.getElementById("install-menu").style.display = "block";
 }
@@ -43,7 +39,6 @@ function closeInstallMenu() {
     document.getElementById("install-menu").style.display = "none";
 }
 
-// ANDROID INSTALL
 function installAndroid() {
     if (deferredPrompt) {
         deferredPrompt.prompt();
@@ -53,7 +48,6 @@ function installAndroid() {
     }
 }
 
-// IOS Instructions
 function showIOSInstructions() {
     showPopup("Su iOS: premi il tasto Condividi → 'Aggiungi alla schermata Home'");
 }
