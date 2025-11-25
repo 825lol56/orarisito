@@ -13,21 +13,23 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // Login Modal
+  // Login Menu
   const loginIcon = document.getElementById("login-icon");
-  const loginModal = document.getElementById("login-modal");
+  const loginMenu = document.getElementById("login-menu");
   const loginBtn = document.getElementById("login-btn");
 
-  loginIcon.addEventListener("click", () => loginModal.style.display = "flex");
-  function closeLoginModal() { loginModal.style.display = "none"; }
-  window.closeLoginModal = closeLoginModal;
+  function toggleLoginMenu() {
+    loginMenu.style.display = loginMenu.style.display === "block" ? "none" : "block";
+  }
+  loginIcon.addEventListener("click", toggleLoginMenu);
+  window.toggleLoginMenu = toggleLoginMenu;
 
   loginBtn.addEventListener("click", () => {
     const code = document.getElementById("login-code").value.trim();
     if(code === "lrnzluckystrike") {
-      localStorage.setItem("developer", "true");
+      localStorage.setItem("developer","true");
       loginSuccess();
-      closeLoginModal();
+      loginMenu.style.display = "none";
     } else alert("Codice non valido.");
   });
 
@@ -39,7 +41,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // Check on load
   if(localStorage.getItem("developer") === "true") loginSuccess();
 
   // Dark/Light Mode
@@ -50,7 +51,7 @@ document.addEventListener("DOMContentLoaded", () => {
     img.src = document.body.classList.contains("dark-mode") ? "icons/darkmode.png" : "icons/lightmode.png";
   });
 
-  // Popups
+  // Popup
   window.openSuggestionsPopup = () => showPopup("Suggerimenti disponibili presto.");
   function showPopup(text) {
     document.getElementById("popup-text").innerText = text;
