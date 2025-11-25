@@ -1,5 +1,5 @@
 {
-    "name": "Transit Timetables",
+    "name": "Orari Trasporti",
     "short_name": "Orari",
     "start_url": "/",
     "display": "standalone",
@@ -7,7 +7,7 @@
     "theme_color": "#6b2fa3",
     "icons": [
         {
-            "src": "favicon.png",
+            "src": "icons/favicon.png",
             "sizes": "512x512",
             "type": "image/png"
         }
