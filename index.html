@@ -1,96 +1,102 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Orari Trasporti</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="icon" type="image/png" href="icons/favicon.png">
-  <link rel="apple-touch-icon" href="icons/favicon.png">
-  <link rel="manifest" href="manifest.json">
-  <meta name="theme-color" content="#6b2fa3">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Orari Trasporti</title>
+<link rel="stylesheet" href="style.css">
+<link rel="icon" type="image/png" href="icons/favicon.png">
+<link rel="apple-touch-icon" href="icons/favicon.png">
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#6b2fa3">
 </head>
 <body>
 
-  <!-- Top Banner -->
-  <header class="top-banner">
-      <h1>Orari Trasporti</h1>
-      <p>Collegamenti rapidi ai principali orari locali</p>
-  </header>
+<!-- Top Banner -->
+<header class="top-banner">
+    <h1>Orari Trasporti</h1>
+    <p>Collegamenti rapidi ai principali orari locali</p>
+</header>
 
-  <!-- Login Form -->
-  <div class="login-container" id="login-container">
-      <input type="text" id="login-code" placeholder="Inserisci codice">
-      <button id="login-btn">Accedi</button>
-  </div>
+<!-- Main Timetable Cards -->
+<main id="main-content">
+    <div class="cards-container">
 
-  <!-- Main Timetable Cards -->
-  <main id="main-content" style="display:none;">
-      <div class="cards-container">
+        <div class="card">
+            <a class="image-btn" href="https://www.sorrentoinsider.com/it/orari-vesuviana-napoli-sorrento?route=napoli_sorr" target="_blank" data-id="treniNapSorr">
+                <img src="icons/vesuviana1.png" alt="Treni Napoli Sorrento">
+            </a>
+            <p class="label">Treni Napoli → Sorrento</p>
+        </div>
 
-          <div class="card">
-              <a class="image-btn" href="https://www.sorrentoinsider.com/it/orari-vesuviana-napoli-sorrento?route=napoli_sorrento" target="_blank" data-id="treniNapSorr">
-                  <img src="icons/vesuviana1.png" alt="Treni Napoli Sorrento">
-              </a>
-              <p class="label">Treni Napoli → Sorrento</p>
-          </div>
+        <div class="card">
+            <a class="image-btn" href="https://www.sorrentoinsider.com/it/orari-vesuviana-napoli-sorrento?route=sorrento_napoli" target="_blank" data-id="treniSorrNap">
+                <img src="icons/vesuviana2.png" alt="Treni Sorrento Napoli">
+            </a>
+            <p class="label">Treni Sorrento → Napoli</p>
+        </div>
 
-          <div class="card">
-              <a class="image-btn" href="https://www.sorrentoinsider.com/it/orari-vesuviana-napoli-sorrento?route=sorrento_napoli" target="_blank" data-id="treniSorrNap">
-                  <img src="icons/vesuviana2.png" alt="Treni Sorrento Napoli">
-              </a>
-              <p class="label">Treni Sorrento → Napoli</p>
-          </div>
+        <div class="card">
+            <a class="image-btn" href="https://www.eavsrl.it/download/009-circolari-vico-equense-in-vigore-dal-3-112025/?wpdmdl=35800&refresh=69221d06e49171763843334" target="_blank" data-id="busVico">
+                <img src="icons/busvico.png" alt="Bus Vico Equense">
+            </a>
+            <p class="label">Bus Vico Equense</p>
+        </div>
 
-          <div class="card">
-              <a class="image-btn" href="https://www.eavsrl.it/download/009-circolari-vico-equense-in-vigore-dal-3-112025/?wpdmdl=35800&refresh=69221d06e49171763843334" target="_blank" data-id="busVico">
-                  <img src="icons/busvico.png" alt="Bus Vico Equense">
-              </a>
-              <p class="label">Bus Vico Equense</p>
-          </div>
+        <div class="card">
+            <a class="image-btn" href="https://www.eavsrl.it/download/supporto-treni-circumvesuviana-sorrento-napoli-in-vigore-dal-10-marzo-2025" target="_blank" data-id="busNotturno">
+                <img src="icons/busnotturno.png" alt="Bus Notturni">
+            </a>
+            <p class="label">Bus Notturni Napoli ↔ Sorr</p>
+        </div>
 
-          <div class="card">
-              <a class="image-btn" href="https://www.eavsrl.it/download/supporto-treni-circumvesuviana-sorrento-napoli-in-vigore-dal-10-marzo-2025" target="_blank" data-id="busNotturno">
-                  <img src="icons/busnotturno.png" alt="Bus Notturni">
-              </a>
-              <p class="label">Bus Notturni Napoli ↔ Sorr</p>
-          </div>
+    </div>
+</main>
 
-      </div>
-  </main>
+<!-- Bottom Banner -->
+<footer class="bottom-banner">
+    <button class="icon-btn" id="btn-instagram">
+        <img src="icons/instagram.png" alt="Instagram">
+    </button>
+    <button class="icon-btn" onclick="openSuggestionsPopup()">
+        <img src="icons/suggestions.png" alt="Suggerimenti">
+    </button>
+    <button class="icon-btn" id="login-icon">
+        <img src="icons/login.png" alt="Login">
+    </button>
+    <button class="icon-btn placeholder-icon" id="theme-toggle">
+        <img src="icons/lightmode.png" alt="Tema">
+    </button>
+    <button class="icon-btn" onclick="toggleInstallMenu()">
+        <img src="icons/install.png" alt="Aggiungi Shortcut">
+    </button>
+</footer>
 
-  <!-- Bottom Banner -->
-  <footer class="bottom-banner" id="bottom-banner" style="display:none;">
-      <button class="icon-btn" id="btn-instagram">
-          <img src="icons/instagram.png" alt="Instagram">
-      </button>
-      <button class="icon-btn" onclick="openSuggestionsPopup()">
-          <img src="icons/suggestions.png" alt="Suggerimenti">
-      </button>
-      <button class="icon-btn" onclick="openLoginPopup()">
-          <img src="icons/login.png" alt="Login">
-      </button>
-      <button class="icon-btn placeholder-icon" id="theme-toggle">
-          <img src="icons/lightmode.png" alt="Tema">
-      </button>
-      <button class="icon-btn" onclick="toggleInstallMenu()">
-          <img src="icons/install.png" alt="Aggiungi Shortcut">
-      </button>
-  </footer>
+<!-- Login Popup -->
+<div id="login-popup" class="popup">
+    <div class="popup-content">
+        <h2>Accedi come sviluppatore</h2>
+        <input type="text" id="login-code" placeholder="Inserisci codice">
+        <button id="login-btn">Accedi</button>
+        <button class="close-btn" onclick="closeLoginPopup()">Chiudi</button>
+    </div>
+</div>
 
-  <div id="popup-overlay" class="overlay" onclick="closePopup()"></div>
-  <div id="popup-box" class="popup-box">
-      <span id="popup-text"></span>
-      <button class="close-btn" onclick="closePopup()">Chiudi</button>
-  </div>
+<!-- Generic Popup Overlay -->
+<div id="popup-overlay" class="overlay" onclick="closePopup()"></div>
+<div id="popup-box" class="popup-box">
+    <span id="popup-text"></span>
+    <button class="close-btn" onclick="closePopup()">Chiudi</button>
+</div>
 
-  <div id="install-menu" class="install-menu">
-      <button onclick="installAndroid()">📱 Android – Aggiungi a Home</button>
-      <button onclick="showIOSInstructions()">🍏 iOS – Istruzioni</button>
-      <button class="close-btn" onclick="closeInstallMenu()">Chiudi</button>
-  </div>
+<!-- Install Menu -->
+<div id="install-menu" class="install-menu">
+    <button onclick="installAndroid()">📱 Android – Aggiungi a Home</button>
+    <button onclick="showIOSInstructions()">🍏 iOS – Istruzioni</button>
+    <button class="close-btn" onclick="closeInstallMenu()">Chiudi</button>
+</div>
 
-  <script type="module" src="firebase-init.js"></script>
-  <script type="module" src="script.js"></script>
+<script type="module" src="firebase-init.js"></script>
+<script type="module" src="script.js"></script>
 </body>
 </html>
