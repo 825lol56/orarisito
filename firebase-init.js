@@ -2,7 +2,6 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-app.js";
 import { getFirestore, doc, getDoc, setDoc, updateDoc, increment, collection, addDoc, getDocs } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-firestore.js";
 
-// Your web app's Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyBw5hWPVlGxIDuliN0Yp3lNqw29GxwdL0A",
   authDomain: "orari-sito.firebaseapp.com",
@@ -16,5 +15,4 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-// Export Firestore functions
 export { db, doc, getDoc, setDoc, updateDoc, increment, collection, addDoc, getDocs };
