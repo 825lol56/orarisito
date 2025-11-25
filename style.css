@@ -1,85 +1,123 @@
-/* Base layout */
 body {
     margin: 0;
-    padding: 0;
-    font-family: "Inter", Arial, sans-serif;
-    background: linear-gradient(180deg, #eef2ff, #f5f7ff);
-    color: #222;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
+    font-family: Arial, sans-serif;
+    background: #f6f4fb;
+    padding-bottom: 90px;
 }
 
-/* Header */
-header {
+/* Header Banner */
+.top-banner {
     text-align: center;
-    padding: 40px 20px 20px;
+    padding: 30px 15px;
+    background: linear-gradient(135deg, #9e4adf, #6b2fa3);
+    color: white;
 }
-
-header h1 {
-    font-size: 2.3rem;
+.top-banner h1 {
     margin: 0;
-    font-weight: 700;
-    color: #1a1a1a;
+    font-size: 26px;
+}
+.top-banner p {
+    margin: 5px 0 0;
+    opacity: 0.9;
 }
 
-.subtitle {
-    margin-top: 8px;
-    font-size: 1.05rem;
-    color: #555;
-}
-
-/* Card container */
-.card {
-    background: #ffffff;
-    width: 90%;
-    max-width: 520px;
-    margin: 0 auto;
-    padding: 25px 20px;
-    border-radius: 18px;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.08);
-}
-
-/* List of buttons */
+/* Image Button List */
 .button-list {
     list-style: none;
-    padding: 0;
-    margin: 0;
+    padding: 20px;
+    display: grid;
+    gap: 30px;
 }
-
 .button-list li {
-    margin: 28px 0;
     text-align: center;
 }
-
-/* Image buttons */
 .image-btn img {
-    width: 100%;
-    max-width: 320px;
+    width: 180px;
+    height: auto;
     border-radius: 14px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-    transition: 0.25s ease;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    transition: 0.2s;
 }
-
-/* Hover effect */
 .image-btn img:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 7px 18px rgba(0,0,0,0.22);
+    transform: scale(1.03);
 }
 
-/* Label under each button */
+/* Labels */
 .label {
-    margin-top: 12px;
-    font-size: 1.15rem;
-    font-weight: 500;
-    color: #1a1a1a;
+    margin-top: 8px;
+    font-weight: bold;
 }
 
-/* Footer */
-footer {
+/* FIXED BANNER AT BOTTOM */
+.bottom-banner {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 70px;
+    background: #4a1d75;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    box-shadow: 0 -4px 12px rgba(0,0,0,0.2);
+}
+.icon-btn {
+    background: none;
+    border: none;
+    padding: 5px;
+}
+.icon-btn img {
+    width: 35px;
+    height: 35px;
+}
+
+/* POPUP */
+.overlay {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.5);
+    display: none;
+}
+.popup-box {
+    position: fixed;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 20px;
+    width: 80%;
+    max-width: 300px;
     text-align: center;
-    padding: 25px;
-    margin-top: auto;
-    color: #666;
-    font-size: 0.9rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.25);
+    display: none;
+}
+.close-btn {
+    margin-top: 15px;
+    padding: 8px 15px;
+    background: #6b2fa3;
+    color: white;
+    border: none;
+    border-radius: 8px;
+}
+
+/* INSTALL MENU */
+.install-menu {
+    position: fixed;
+    bottom: 90px;
+    right: 10px;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+    padding: 10px;
+    display: none;
+    width: 250px;
+}
+.install-menu button {
+    width: 100%;
+    margin: 5px 0;
+    padding: 10px;
+    border: none;
+    background: #6b2fa3;
+    color: white;
+    border-radius: 8px;
 }

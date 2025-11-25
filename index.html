@@ -3,18 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@lorenzo.c.l su ig</title>
+    <title>Transit Timetables</title>
+
+    <!-- Styles -->
     <link rel="stylesheet" href="style.css">
+
+    <!-- Favicon -->
     <link rel="icon" type="image/png" href="favicon.png">
     <link rel="apple-touch-icon" href="favicon.png">
-    <meta name="theme-color" content="#a06bff">
+
+    <!-- Manifest for Android install -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#6b2fa3">
 </head>
+
 <body>
 
-    <!-- BANNER SUPERIORE -->
-    <header class="banner">
+    <!-- Header Banner -->
+    <header class="top-banner">
         <h1>Orari Trasporti</h1>
-        <p>Clicca sul mezzo che ti interessa</p>
+        <p>Collegamenti rapidi ai principali orari locali</p>
     </header>
 
     <main>
@@ -23,7 +31,7 @@
             <!-- TRENI NAPOLI → SORRENTO -->
             <li>
                 <a class="image-btn" href="https://www.sorrentoinsider.com/it/orari-vesuviana-napoli-sorrento?route=napoli_sorrento" target="_blank">
-                    <img src="vesuviana1.png" alt="Treni Napoli Sorrento">
+                    <img src="icons/vesuviana1.png" alt="Treni Napoli Sorrento">
                 </a>
                 <p class="label">Treni Napoli → Sorrento</p>
             </li>
@@ -31,15 +39,15 @@
             <!-- TRENI SORRENTO → NAPOLI -->
             <li>
                 <a class="image-btn" href="https://www.sorrentoinsider.com/it/orari-vesuviana-napoli-sorrento?route=sorrento_napoli" target="_blank">
-                    <img src="vesuviana2.png" alt="Treni Sorrento Napoli">
+                    <img src="icons/vesuviana2.png" alt="Treni Sorrento Napoli">
                 </a>
                 <p class="label">Treni Sorrento → Napoli</p>
             </li>
-            
+
             <!-- BUS VICO EQUENSE -->
             <li>
                 <a class="image-btn" href="https://www.eavsrl.it/download/009-circolari-vico-equense-in-vigore-dal-3-112025/?wpdmdl=35800&refresh=69221d06e49171763843334" target="_blank">
-                    <img src="busvico.png" alt="Bus Vico Equense">
+                    <img src="icons/busvico.png" alt="Bus Vico Equense">
                 </a>
                 <p class="label">Bus Vico Equense</p>
             </li>
@@ -47,13 +55,55 @@
             <!-- BUS NOTTURNI -->
             <li>
                 <a class="image-btn" href="https://www.eavsrl.it/download/supporto-treni-circumvesuviana-sorrento-napoli-in-vigore-dal-10-marzo-2025" target="_blank">
-                    <img src="busnotturno.png" alt="Bus Notturni">
+                    <img src="icons/busnotturno.png" alt="Bus Notturni">
                 </a>
-                <p class="label">Bus Notturni Napoli ↔ Sorrento</p>
+                <p class="label">Bus Notturni Nap ↔ Sorr</p>
             </li>
 
         </ul>
     </main>
 
+    <!-- FIXED BOTTOM BANNER -->
+    <footer class="bottom-banner">
+
+        <button class="icon-btn" onclick="openExternalLink('https://instagram.com/lorenzo.c.l')">
+            <img src="icons/instagram.png" alt="Instagram">
+        </button>
+
+        <button class="icon-btn" onclick="openSuggestionsPopup()">
+            <img src="icons/suggestions.png" alt="Suggerimenti">
+        </button>
+
+        <button class="icon-btn" onclick="openLoginPopup()">
+            <img src="icons/login.png" alt="Login">
+        </button>
+
+        <button class="icon-btn" onclick="openPlaceholderPopup()">
+            <img src="icons/placeholder.png" alt="Placeholder">
+        </button>
+
+        <button class="icon-btn" onclick="openInstallMenu()">
+            <img src="icons/install.png" alt="Installa">
+        </button>
+
+    </footer>
+
+    <!-- POPUP OVERLAY -->
+    <div id="popup-overlay" class="overlay" onclick="closePopup()"></div>
+
+    <!-- POPUP CONTENT -->
+    <div id="popup-box" class="popup-box">
+        <span id="popup-text">Testo popup</span>
+        <button class="close-btn" onclick="closePopup()">Chiudi</button>
+    </div>
+
+    <!-- INSTALL MENU -->
+    <div id="install-menu" class="install-menu">
+        <button onclick="installAndroid()">📱 Android – Aggiungi a Home</button>
+        <button onclick="showIOSInstructions()">🍏 iOS – Istruzioni</button>
+        <button class="close-btn" onclick="closeInstallMenu()">Chiudi</button>
+    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>

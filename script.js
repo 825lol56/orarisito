@@ -1,10 +1,59 @@
-// Tiny mobile tap animation
-document.querySelectorAll(".image-btn img").forEach(img => {
-    img.addEventListener("touchstart", () => {
-        img.style.transform = "scale(0.96)";
-    });
+let deferredPrompt = null;
 
-    img.addEventListener("touchend", () => {
-        img.style.transform = "scale(1)";
-    });
+window.addEventListener("beforeinstallprompt", (e) => {
+    e.preventDefault();
+    deferredPrompt = e;
 });
+
+// OPEN EXTERNAL LINK
+function openExternalLink(url) {
+    window.open(url, "_blank");
+}
+
+// POPUP FUNCTIONS
+function openSuggestionsPopup() {
+    showPopup("Funzione suggerimenti disponibile presto!");
+}
+
+function openLoginPopup() {
+    showPopup("Login in arrivo!");
+}
+
+function openPlaceholderPopup() {
+    showPopup("Funzione in sviluppo!");
+}
+
+function showPopup(text) {
+    document.getElementById("popup-text").innerText = text;
+    document.getElementById("popup-overlay").style.display = "block";
+    document.getElementById("popup-box").style.display = "block";
+}
+
+function closePopup() {
+    document.getElementById("popup-overlay").style.display = "none";
+    document.getElementById("popup-box").style.display = "none";
+}
+
+// INSTALL MENU
+function openInstallMenu() {
+    document.getElementById("install-menu").style.display = "block";
+}
+
+function closeInstallMenu() {
+    document.getElementById("install-menu").style.display = "none";
+}
+
+// ANDROID INSTALL
+function installAndroid() {
+    if (deferredPrompt) {
+        deferredPrompt.prompt();
+        deferredPrompt = null;
+    } else {
+        showPopup("Installazione non disponibile su questo dispositivo.");
+    }
+}
+
+// IOS Instructions
+function showIOSInstructions() {
+    showPopup("Su iOS: premi il tasto Condividi → 'Aggiungi alla schermata Home'");
+}
