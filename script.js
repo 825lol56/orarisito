@@ -38,3 +38,9 @@ function installAndroid() {
 function showIOSInstructions() {
     showPopup("Su iOS: premi il tasto Condividi → 'Aggiungi alla schermata Home'");
 }
+
+// Theme toggle
+const themeToggleBtn = document.getElementById("theme-toggle");
+themeToggleBtn.addEventListener("click", () => {
+    document.body.classList.toggle("dark-mode");
+});
