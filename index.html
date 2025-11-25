@@ -5,14 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Orari Trasporti</title>
 
-    <!-- Styles -->
     <link rel="stylesheet" href="style.css">
-
-    <!-- Favicon -->
     <link rel="icon" type="image/png" href="icons/favicon.png">
     <link rel="apple-touch-icon" href="icons/favicon.png">
-
-    <!-- Manifest for Android install -->
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#6b2fa3">
 </head>
@@ -77,8 +72,8 @@
             <img src="icons/lightmode.png" alt="Tema">
         </button>
 
-        <button class="icon-btn" onclick="openInstallMenu()">
-            <img src="icons/install.png" alt="Install">
+        <button class="icon-btn" onclick="toggleInstallMenu()">
+            <img src="icons/install.png" alt="Aggiungi Shortcut">
         </button>
 
     </footer>
@@ -86,13 +81,13 @@
     <!-- Popup Overlay -->
     <div id="popup-overlay" class="overlay" onclick="closePopup()"></div>
 
-    <!-- Popup Content -->
+    <!-- Popup Box -->
     <div id="popup-box" class="popup-box">
-        <span id="popup-text">Testo popup</span>
+        <span id="popup-text"></span>
         <button class="close-btn" onclick="closePopup()">Chiudi</button>
     </div>
 
-    <!-- Install Menu -->
+    <!-- Install Menu with two buttons -->
     <div id="install-menu" class="install-menu">
         <button onclick="installAndroid()">📱 Android – Aggiungi a Home</button>
         <button onclick="showIOSInstructions()">🍏 iOS – Istruzioni</button>

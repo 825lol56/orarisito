@@ -1,16 +1,11 @@
-/* RESET */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+/* Reset */
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
-/* BODY */
 body {
     font-family: Arial, sans-serif;
     background: #f6f4fb;
     color: #333;
-    padding-bottom: 90px; /* space for fixed footer */
+    padding-bottom: 90px;
 }
 
 /* Top Banner */
@@ -20,16 +15,10 @@ body {
     background: linear-gradient(135deg, #9e4adf, #6b2fa3);
     color: white;
 }
-.top-banner h1 {
-    margin: 0;
-    font-size: 26px;
-}
-.top-banner p {
-    margin: 5px 0 0;
-    opacity: 0.9;
-}
+.top-banner h1 { font-size: 26px; }
+.top-banner p { margin-top: 5px; opacity: 0.9; }
 
-/* CARDS CONTAINER */
+/* Cards Container */
 .cards-container {
     display: grid;
     grid-template-columns: 1fr;
@@ -38,21 +27,10 @@ body {
     max-width: 900px;
     margin: 0 auto;
 }
+@media (min-width: 768px) { .cards-container { grid-template-columns: repeat(2, 1fr); gap: 40px; } }
+@media (min-width: 1200px) { .cards-container { grid-template-columns: repeat(4, 1fr); } }
 
-@media (min-width: 768px) {
-    .cards-container {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 40px;
-    }
-}
-
-@media (min-width: 1200px) {
-    .cards-container {
-        grid-template-columns: repeat(4, 1fr);
-    }
-}
-
-/* CARD */
+/* Card */
 .card {
     background: white;
     border-radius: 16px;
@@ -61,7 +39,7 @@ body {
     box-shadow: 0 4px 12px rgba(0,0,0,0.12);
 }
 
-/* IMAGE BUTTONS */
+/* Image buttons */
 .image-btn img {
     width: 100%;
     height: auto;
@@ -73,13 +51,10 @@ body {
     box-shadow: 0 5px 14px rgba(0,0,0,0.22);
 }
 
-/* LABELS */
-.label {
-    margin-top: 8px;
-    font-weight: bold;
-}
+/* Labels */
+.label { margin-top: 8px; font-weight: bold; }
 
-/* FIXED BOTTOM BANNER */
+/* Fixed bottom banner */
 .bottom-banner {
     position: fixed;
     bottom: 0;
@@ -91,77 +66,38 @@ body {
     align-items: center;
     box-shadow: 0 -4px 12px rgba(0,0,0,0.2);
 }
-.icon-btn {
-    background: none;
-    border: none;
-    padding: 5px;
-}
-.icon-btn img {
-    width: 35px;
-    height: 35px;
-}
+.icon-btn { background: none; border: none; padding: 5px; }
+.icon-btn img { width: 35px; height: 35px; }
 
-/* Placeholder icon light/dark mode */
-@media (prefers-color-scheme: dark) {
-    .placeholder-icon img {
-        content: url("icons/darkmode.png");
-    }
-}
-@media (prefers-color-scheme: light) {
-    .placeholder-icon img {
-        content: url("icons/lightmode.png");
-    }
-}
+/* Placeholder icon light/dark */
+@media (prefers-color-scheme: dark) { .placeholder-icon img { content: url("icons/darkmode.png"); } }
+@media (prefers-color-scheme: light) { .placeholder-icon img { content: url("icons/lightmode.png"); } }
 
-/* POPUP */
+/* Popup */
 .overlay {
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    background: rgba(0,0,0,0.5);
-    display: none;
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.5); display: none;
 }
 .popup-box {
-    position: fixed;
-    top: 50%; left: 50%;
-    transform: translate(-50%, -50%);
-    background: white;
-    padding: 20px;
-    width: 80%;
-    max-width: 300px;
-    text-align: center;
-    border-radius: 12px;
-    box-shadow: 0 4px 14px rgba(0,0,0,0.25);
-    display: none;
+    position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    background: white; padding: 20px; width: 80%; max-width: 300px;
+    text-align: center; border-radius: 12px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.25); display: none;
 }
 .close-btn {
-    margin-top: 15px;
-    padding: 8px 15px;
-    background: #6b2fa3;
-    color: white;
-    border: none;
-    border-radius: 8px;
+    margin-top: 15px; padding: 8px 15px; background: #6b2fa3; color: white;
+    border: none; border-radius: 8px;
 }
 
-/* INSTALL MENU */
+/* Install Menu */
 .install-menu {
     position: fixed;
-    bottom: 90px;
-    right: 10px;
-    background: #ffffff;
-    border-radius: 12px;
+    bottom: 90px; right: 10px;
+    background: #ffffff; border-radius: 12px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.25);
-    padding: 10px;
-    display: none;
-    width: 250px;
-    z-index: 1000;
+    padding: 10px; display: none; width: 250px; z-index: 1000;
 }
 .install-menu button {
-    width: 100%;
-    margin: 5px 0;
-    padding: 10px;
-    border: none;
-    background: #6b2fa3;
-    color: white;
-    border-radius: 8px;
+    width: 100%; margin: 5px 0; padding: 10px;
+    border: none; background: #6b2fa3; color: white; border-radius: 8px;
 }
