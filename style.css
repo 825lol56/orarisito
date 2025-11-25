@@ -1,141 +1,174 @@
+/* GENERICS */
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    background: #f6f4fb;
-    padding-bottom: 90px;
+    background: #f4f4f9;
+    color: #2d2d2d;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
-/* HEADER BANNER */
+/* TOP BANNER */
 .top-banner {
     text-align: center;
-    padding: 30px 15px;
-    background: linear-gradient(135deg, #9e4adf, #6b2fa3);
+    padding: 25px 10px;
+    background: linear-gradient(135deg, #8b4cc2, #5b2496);
     color: white;
 }
+
 .top-banner h1 {
     margin: 0;
     font-size: 26px;
 }
+
 .top-banner p {
     margin: 5px 0 0;
     opacity: 0.9;
 }
 
-/* BUTTON GRID (IMPROVED FOR DESKTOP) */
-.button-list {
-    list-style: none;
-    padding: 20px;
-    display: grid;
-    gap: 30px;
+/* MAIN CONTENT */
+main {
+    flex: 1;
+    padding: 25px 10px 90px;
+    display: flex;
     justify-content: center;
 }
 
-@media (min-width: 700px) {
-    .button-list {
-        grid-template-columns: repeat(2, 300px);
-    }
+.button-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    max-width: 600px;
 }
 
 .card {
     background: white;
-    padding: 15px;
-    border-radius: 16px;
-    box-shadow: 0 6px 15px rgba(0,0,0,0.15);
-}
-
-/* IMAGE BUTTONS */
-.image-btn img {
-    width: 100%;
+    margin-bottom: 20px;
     border-radius: 14px;
-    transition: 0.2s;
-}
-.image-btn img:hover {
-    transform: scale(1.03);
-}
-
-/* LABELS */
-.label {
-    margin-top: 10px;
-    font-size: 17px;
+    padding: 15px;
     text-align: center;
-    font-weight: bold;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    transition: transform 0.15s ease, box-shadow 0.2s ease;
 }
 
-/* FIXED BOTTOM BANNER */
+.card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 7px 15px rgba(0,0,0,0.12);
+}
+
+.card img {
+    width: 100%;
+    max-width: 230px;
+    height: auto;
+}
+
+.label {
+    margin-top: 12px;
+    font-size: 17px;
+    font-weight: 600;
+}
+
+/* BOTTOM BANNER */
 .bottom-banner {
     position: fixed;
     bottom: 0;
     width: 100%;
-    height: 70px;
-    background: #4a1d75;
+    background: #5b2496;
+    padding: 10px 0;
     display: flex;
     justify-content: space-around;
-    align-items: center;
-    box-shadow: 0 -4px 12px rgba(0,0,0,0.2);
+    box-shadow: 0 -3px 10px rgba(0,0,0,0.15);
 }
+
 .icon-btn {
     background: none;
     border: none;
-    padding: 5px;
+    padding: 8px;
 }
+
 .icon-btn img {
-    width: 32px;
+    width: 30px;
+    height: 30px;
 }
 
-/* POPUP */
-.overlay {
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    background: rgba(0,0,0,0.5);
-    display: none;
-}
-.popup-box {
-    position: fixed;
-    top: 50%; left: 50%;
-    transform: translate(-50%, -50%);
-    background: white;
-    padding: 20px;
-    width: 80%;
-    max-width: 300px;
-    text-align: center;
-    border-radius: 12px;
-    display: none;
-}
-.close-btn {
-    margin-top: 15px;
-    padding: 8px 15px;
-    background: #6b2fa3;
-    color: white;
-    border: none;
-    border-radius: 8px;
-}
-
-/* INSTALL MENU HIDDEN BY DEFAULT */
+/* INSTALL POPUP */
 .install-menu {
     position: fixed;
     bottom: 90px;
-    right: 10px;
-    background: #ffffff;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.25);
-    padding: 10px;
-    display: none;
-    width: 250px;
-}
-.install-menu button {
-    width: 100%;
-    margin: 5px 0;
-    padding: 10px;
-    border: none;
-    background: #6b2fa3;
-    color: white;
-    border-radius: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: white;
+    width: 90%;
+    max-width: 350px;
+    padding: 20px;
+    border-radius: 14px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
 }
 
-/* DARK MODE PLACEHOLDER ICON FIX */
-@media (prefers-color-scheme: dark) {
-    .placeholder-icon {
-        filter: brightness(0) invert(1);
-    }
+.install-menu.hidden {
+    display: none;
+}
+
+.install-menu button {
+    display: block;
+    width: 100%;
+    margin: 10px 0;
+    padding: 12px;
+    background: #8b4cc2;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+}
+
+.close-install {
+    margin-top: 5px;
+    background: #444;
+}
+
+/* iOS instructions */
+.ios-text {
+    margin: 10px 0;
+    font-size: 15px;
+    opacity: 0.8;
+}
+
+/* DARK MODE (TOGGLED) */
+body.dark {
+    background: #0f0f16;
+    color: white;
+}
+
+body.dark .card {
+    background: #1a1a25;
+    box-shadow: 0 6px 15px rgba(255,255,255,0.05);
+}
+
+body.dark .label {
+    color: white;
+}
+
+body.dark .top-banner {
+    background: linear-gradient(135deg, #4e258a, #2d1650);
+}
+
+body.dark .bottom-banner {
+    background: #2d1650;
+}
+
+body.dark .install-menu {
+    background: #1a1a25;
+    color: white;
+}
+
+body.dark .install-menu button {
+    background: #4e258a;
+}
+
+/* AUTO-INVERT ICONS IN DARK MODE */
+body.dark img {
+    filter: brightness(0) invert(1);
 }

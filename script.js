@@ -1,53 +1,45 @@
-let deferredPrompt = null;
+/* SHOW INSTALL MENU */
+function openInstall() {
+    document.getElementById("installMenu").classList.remove("hidden");
+}
+
+/* CLOSE INSTALL MENU */
+function closeInstall() {
+    document.getElementById("installMenu").classList.add("hidden");
+}
+
+/* ANDROID INSTALL (PWA) */
+let deferredPrompt;
 
 window.addEventListener("beforeinstallprompt", (e) => {
     e.preventDefault();
     deferredPrompt = e;
 });
 
-/* External link */
-function openExternalLink(url) {
-    window.open(url, "_blank");
-}
-
-/* POPUPS */
-function showPopup(text) {
-    document.getElementById("popup-text").innerText = text;
-    document.getElementById("popup-overlay").style.display = "block";
-    document.getElementById("popup-box").style.display = "block";
-}
-
-function closePopup() {
-    document.getElementById("popup-overlay").style.display = "none";
-    document.getElementById("popup-box").style.display = "none";
-}
-
-function openSuggestionsPopup() {
-    showPopup("Funzione suggerimenti disponibile presto!");
-}
-
-function openLoginPopup() {
-    showPopup("Login in arrivo!");
-}
-
-/* INSTALL MENU */
-function openInstallMenu() {
-    document.getElementById("install-menu").style.display = "block";
-}
-
-function closeInstallMenu() {
-    document.getElementById("install-menu").style.display = "none";
-}
-
 function installAndroid() {
-    if (deferredPrompt) {
-        deferredPrompt.prompt();
-        deferredPrompt = null;
+    if (!deferredPrompt) {
+        alert("Installazione non disponibile su questo dispositivo");
+        return;
+    }
+    deferredPrompt.prompt();
+}
+
+/* DARK MODE TOGGLE */
+function toggleDarkMode() {
+    const body = document.body;
+    body.classList.toggle("dark");
+
+    if (body.classList.contains("dark")) {
+        localStorage.setItem("theme", "dark");
     } else {
-        showPopup("Installazione non disponibile su questo dispositivo.");
+        localStorage.setItem("theme", "light");
     }
 }
 
-function showIOSInstructions() {
-    showPopup("Su iOS: premi il tasto Condividi → 'Aggiungi alla schermata Home'");
-}
+/* LOAD SAVED THEME */
+window.onload = () => {
+    const theme = localStorage.getItem("theme");
+    if (theme === "dark") {
+        document.body.classList.add("dark");
+    }
+};
