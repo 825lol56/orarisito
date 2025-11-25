@@ -2,6 +2,19 @@ import { db, doc, getDoc, setDoc, updateDoc, increment } from './firebase-init.j
 
 document.addEventListener("DOMContentLoaded", () => {
 
+  // Show proper icon immediately
+  const instagramBtn=document.getElementById("btn-instagram");
+  function renderInstagramIcon(){
+    if(localStorage.getItem("developer")==="true"){
+      instagramBtn.innerHTML=`<img src="icons/devpanel.png" alt="Developer Panel">`;
+      instagramBtn.onclick = ()=>window.location.href="developer.html";
+    } else {
+      instagramBtn.innerHTML=`<img src="icons/instagram.png" alt="Instagram">`;
+    }
+    instagramBtn.querySelector("img").style.visibility="visible";
+  }
+  renderInstagramIcon();
+
   // Timetable clicks
   document.querySelectorAll(".cards-container a").forEach(a => {
     a.addEventListener("click", async () => {
@@ -18,29 +31,22 @@ document.addEventListener("DOMContentLoaded", () => {
   const loginMenu = document.getElementById("login-menu");
   const loginBtn = document.getElementById("login-btn");
 
-  function toggleLoginMenu() {
-    loginMenu.style.display = loginMenu.style.display === "block" ? "none" : "block";
-  }
-  loginIcon.addEventListener("click", toggleLoginMenu);
+  window.toggleLoginMenu = ()=>{
+    loginMenu.style.display = loginMenu.style.display==="block" ? "none":"block";
+  };
+  loginIcon.addEventListener("click", ()=>{
+    toggleLoginMenu();
+  });
 
   loginBtn.addEventListener("click", () => {
     const code = document.getElementById("login-code").value.trim();
-    if(code === "lrnzluckystrike") {
+    if(code === "lrnzluckystrike"){
       localStorage.setItem("developer","true");
-      loginSuccess();
-      loginMenu.style.display="none";
+      renderInstagramIcon();
+      toggleLoginMenu();
+      alert("Accesso sviluppatore effettuato!");
     } else alert("Codice non valido.");
   });
-
-  function loginSuccess() {
-    if(localStorage.getItem("developer")==="true") {
-      const instagramBtn=document.getElementById("btn-instagram");
-      instagramBtn.innerHTML=`<img src="icons/devpanel.png" alt="Developer Panel">`;
-      instagramBtn.onclick = ()=>window.location.href="developer.html";
-    }
-  }
-
-  if(localStorage.getItem("developer")==="true") loginSuccess();
 
   // Dark/Light Mode
   const themeToggleBtn=document.getElementById("theme-toggle");
@@ -57,11 +63,7 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("popup-overlay").style.display="block";
     document.getElementById("popup-box").style.display="block";
   }
-  function closePopup(){
-    document.getElementById("popup-overlay").style.display="none";
-    document.getElementById("popup-box").style.display="none";
-  }
-  window.closePopup=closePopup;
+  window.closePopup=()=>{document.getElementById("popup-overlay").style.display="none"; document.getElementById("popup-box").style.display="none";};
 
   // Install Menu
   let deferredPrompt=null;
@@ -79,4 +81,5 @@ document.addEventListener("DOMContentLoaded", () => {
     else showPopup("Installazione non disponibile su questo dispositivo.");
   };
   window.showIOSInstructions=()=>showPopup("Su iOS: premi Condividi → 'Aggiungi alla schermata Home'");
+
 });
