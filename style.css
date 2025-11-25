@@ -1,4 +1,3 @@
-/* General */
 body {
   font-family: Arial, sans-serif;
   margin: 0;
@@ -6,10 +5,8 @@ body {
   background: #f5f6fa;
   color: #333;
 }
-.dark-mode {
-  background: #1e1e1e;
-  color: #f5f6fa;
-}
+
+.dark-mode { background:#1e1e1e; color:#f5f6fa; }
 
 /* Top Banner */
 .top-banner {
@@ -27,9 +24,7 @@ body {
   padding: 20px;
   justify-items: center;
 }
-.card {
-  text-align: center;
-}
+.card { text-align:center; }
 .card img {
   width: 100%;
   max-width: 150px;
@@ -37,18 +32,19 @@ body {
   cursor: pointer;
   transition: transform 0.2s, box-shadow 0.2s;
 }
-.card img:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-}
+.card img:hover { transform: translateY(-5px); box-shadow: 0 4px 12px rgba(0,0,0,0.2); }
 
 /* Bottom Banner */
 .bottom-banner {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
   display: flex;
   justify-content: space-around;
   align-items: center;
   padding: 10px;
   background: #6b2fa3;
+  z-index: 100;
 }
 .bottom-banner .icon-btn img {
   width: 40px;
@@ -57,83 +53,42 @@ body {
 }
 
 /* Popup Menus */
-.popup-menu {
+.popup-menu, .install-menu {
   display: none;
   position: absolute;
-  bottom: 70px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: white;
-  padding: 15px;
-  border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-  z-index: 1000;
-}
-.dark-mode .popup-menu {
-  background: #2b2b2b;
-  color: white;
-}
-
-/* General Overlay */
-.overlay {
-  display: none;
-  position: fixed;
-  top:0; left:0; width:100%; height:100%;
-  background: rgba(0,0,0,0.5);
-  z-index: 900;
-}
-
-/* Popup Box */
-.popup-box {
-  display: none;
-  position: fixed;
-  top: 50%;
-  left:50%;
-  transform: translate(-50%,-50%);
-  background: white;
-  padding: 15px;
-  border-radius: 10px;
-  z-index: 1001;
-}
-.dark-mode .popup-box {
-  background: #2b2b2b;
-  color: white;
-}
-
-/* Install Menu */
-.install-menu {
-  display: none;
-  position: absolute;
-  bottom: 70px;
+  bottom: 60px; /* above toolbar */
   left: 50%;
   transform: translateX(-50%);
   background: white;
   padding: 10px;
   border-radius: 10px;
-  z-index: 1000;
+  box-shadow:0 4px 12px rgba(0,0,0,0.3);
+  z-index: 200;
 }
-.dark-mode .install-menu {
-  background: #2b2b2b;
-  color: white;
+.dark-mode .popup-menu, .dark-mode .install-menu { background:#2b2b2b; color:white; }
+
+/* Overlay */
+.overlay {
+  display:none;
+  position:fixed; top:0; left:0;
+  width:100%; height:100%;
+  background: rgba(0,0,0,0.5);
+  z-index:150;
 }
 
-/* Inputs and Buttons */
-input[type=text] {
-  padding: 5px;
-  width: 80%;
-  margin-bottom: 10px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
+/* Popup Box */
+.popup-box {
+  display:none;
+  position:fixed;
+  top:50%; left:50%;
+  transform:translate(-50%,-50%);
+  background:white;
+  padding:15px;
+  border-radius:10px;
+  z-index:200;
 }
-button {
-  padding: 5px 10px;
-  margin: 2px;
-  border-radius: 5px;
-  border: none;
-  cursor: pointer;
-  background: #6b2fa3;
-  color: white;
-}
-button:hover {
-  background: #9b59b6;
-}
+.dark-mode .popup-box { background:#2b2b2b; color:white; }
+
+input[type=text] { padding:5px; width:80%; margin-bottom:10px; border-radius:5px; border:1px solid #ccc; }
+button { padding:5px 10px; margin:2px; border-radius:5px; border:none; cursor:pointer; background:#6b2fa3; color:white; }
+button:hover { background:#9b59b6; }
