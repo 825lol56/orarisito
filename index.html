@@ -1,113 +1,104 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Orari Trasporti</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Orari Trasporti</title>
 
-    <link rel="stylesheet" href="style.css">
-
-    <!-- Favicon -->
-    <link rel="icon" href="icons/favicon.png" type="image/png">
-
-    <!-- PWA manifest -->
-    <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="icons/favicon.png" type="image/png">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#6b2fa3">
 </head>
-
 <body>
 
-    <!-- HEADER -->
-    <header class="header-banner">
-        <h1>Orari Trasporti</h1>
-        <p>Collegamenti rapidi ai vari orari del trasporto locale</p>
-    </header>
+  <header class="top-banner">
+    <h1>Orari Trasporti</h1>
+    <p>Collegamenti rapidi ai principali orari locali</p>
+  </header>
 
-    <!-- MAIN BUTTON GRID -->
-    <main>
-        <ul class="button-list">
+  <main id="main-content">
+    <div class="cards-container">
 
-            <li>
-                <a class="image-btn" href="https://www.sorrentoinsider.com/it/orari-vesuviana-napoli-sorrento?route=napoli_sorrento" target="_blank">
-                    <img src="icons/vesuviana1.png" alt="Treni Napoli → Sorrento">
-                </a>
-                <p class="label">Treni Napoli → Sorrento</p>
-            </li>
+      <div class="card">
+        <a class="image-btn" href="https://www.sorrentoinsider.com/it/orari-vesuviana-napoli-sorrento?route=napoli_sorrento" target="_blank" data-id="treniNapSorr">
+          <img src="icons/vesuviana1.png" alt="Treni Napoli Sorrento">
+        </a>
+        <p class="label">Treni Napoli → Sorrento</p>
+      </div>
 
-            <li>
-                <a class="image-btn" href="https://www.sorrentoinsider.com/it/orari-vesuviana-napoli-sorrento?route=sorrento_napoli" target="_blank">
-                    <img src="icons/vesuviana2.png" alt="Treni Sorrento → Napoli">
-                </a>
-                <p class="label">Treni Sorrento → Napoli</p>
-            </li>
+      <div class="card">
+        <a class="image-btn" href="https://www.sorrentoinsider.com/it/orari-vesuviana-napoli-sorrento?route=sorrento_napoli" target="_blank" data-id="treniSorrNap">
+          <img src="icons/vesuviana2.png" alt="Treni Sorrento Napoli">
+        </a>
+        <p class="label">Treni Sorrento → Napoli</p>
+      </div>
 
-            <li>
-                <a class="image-btn" href="https://www.eavsrl.it/download/009-circolari-vico-equense-in-vigore-dal-3-112025/?wpdmdl=35800" target="_blank">
-                    <img src="icons/busvico.png" alt="Bus Vico Equense">
-                </a>
-                <p class="label">Bus Vico Equense</p>
-            </li>
+      <div class="card">
+        <a class="image-btn" href="https://www.eavsrl.it/download/009-circolari-vico-equense-in-vigore-dal-3-112025/?wpdmdl=35800" target="_blank" data-id="busVico">
+          <img src="icons/busvico.png" alt="Bus Vico Equense">
+        </a>
+        <p class="label">Bus Vico Equense</p>
+      </div>
 
-            <li>
-                <a class="image-btn" href="https://www.eavsrl.it/download/supporto-treni-circumvesuviana-sorrento-napoli-in-vigore-dal-10-marzo-2025" target="_blank">
-                    <img src="icons/busnotturno.png" alt="Bus Notturni">
-                </a>
-                <p class="label">Bus Notturni Nap ↔ Sorr</p>
-            </li>
+      <div class="card">
+        <a class="image-btn" href="https://www.eavsrl.it/download/supporto-treni-circumvesuviana-sorrento-napoli-in-vigore-dal-10-marzo-2025" target="_blank" data-id="busNotturno">
+          <img src="icons/busnotturno.png" alt="Bus Notturni">
+        </a>
+        <p class="label">Bus Notturni Napoli ↔ Sorr</p>
+      </div>
 
-        </ul>
-    </main>
-
-    <!-- FOOTER 5-ICON BAR -->
-    <footer class="footer-bar">
-        
-        <!-- Instagram -->
-        <button class="icon-btn" id="btn-instagram">
-            <img src="icons/instagram.png" alt="Instagram">
-        </button>
-
-        <!-- Suggestions -->
-        <button class="icon-btn" id="btn-suggest">
-            <img src="icons/suggest.png" alt="Suggerimenti">
-        </button>
-
-        <!-- Login -->
-        <button class="icon-btn" id="btn-login">
-            <img src="icons/login.png" alt="Login">
-        </button>
-
-        <!-- Light/Dark Toggle -->
-        <button class="icon-btn" id="btn-theme">
-            <img src="icons/lightmode.png" id="theme-icon" alt="Tema">
-        </button>
-
-        <!-- Install menu -->
-        <button class="icon-btn" id="btn-install">
-            <img src="icons/install.png" alt="Installa">
-        </button>
-
-    </footer>
-
-    <!-- INSTALL POPUP -->
-    <div id="install-popup" class="popup hidden">
-        <div class="popup-content">
-            <h2>Installa scorciatoia</h2>
-            <button id="install-android" class="popup-button">Android</button>
-            <button id="install-ios" class="popup-button">iOS</button>
-            <button id="install-close" class="close-button">Chiudi</button>
-        </div>
     </div>
+  </main>
 
-    <!-- LOGIN POPUP -->
-    <div id="login-popup" class="popup hidden">
-        <div class="popup-content">
-            <h2>Accesso</h2>
-            <input id="login-code" type="text" placeholder="Inserisci codice">
-            <button id="login-submit" class="popup-button">Accedi</button>
-            <button id="login-close" class="close-button">Chiudi</button>
-        </div>
+  <!-- footer toolbar: exactly 5 icons -->
+  <footer class="bottom-banner" role="navigation" aria-label="Barra strumenti">
+    <button class="icon-btn" id="btn-instagram" aria-label="Instagram">
+      <img src="icons/instagram.png" alt="Instagram">
+    </button>
+
+    <button class="icon-btn" id="btn-suggestions" aria-label="Suggerimenti">
+      <img src="icons/suggestions.png" alt="Suggerimenti">
+    </button>
+
+    <button class="icon-btn" id="login-icon" aria-label="Accedi">
+      <img src="icons/login.png" alt="Login">
+    </button>
+
+    <button class="icon-btn" id="theme-toggle" aria-label="Cambia tema">
+      <img src="icons/lightmode.png" id="theme-icon" alt="Tema">
+    </button>
+
+    <button class="icon-btn" id="install-button" aria-label="Aggiungi alla Home">
+      <img src="icons/install.png" alt="Aggiungi">
+    </button>
+  </footer>
+
+  <!-- login menu (hidden by default) - positioned above the login button -->
+  <div id="login-menu" class="popup-menu" aria-hidden="true">
+    <input type="text" id="login-code" placeholder="Inserisci codice">
+    <div style="display:flex; gap:8px; justify-content:center; margin-top:6px;">
+      <button id="login-submit">Accedi</button>
+      <button class="close-btn" id="login-close">Chiudi</button>
     </div>
+  </div>
 
-    <script src="script.js"></script>
+  <!-- install menu -->
+  <div id="install-menu" class="popup-menu" aria-hidden="true">
+    <div style="display:flex; flex-direction:column; gap:8px;">
+      <button id="install-android">📱 Android – Aggiungi a Home</button>
+      <button id="install-ios">🍏 iOS – Istruzioni</button>
+      <button class="close-btn" id="install-close">Chiudi</button>
+    </div>
+  </div>
 
+  <!-- simple message popup -->
+  <div id="popup-overlay" class="overlay" aria-hidden="true"></div>
+  <div id="popup-box" class="popup-box" aria-hidden="true">
+    <div id="popup-text"></div>
+    <div style="text-align:center; margin-top:10px;"><button id="popup-close">Chiudi</button></div>
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>
