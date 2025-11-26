@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // 1) Populate Instagram button (always visible)
   btnInstagram.innerHTML = '<img src="icons/instagram.png" alt="Instagram">';
   btnInstagram.addEventListener('click', () => {
-    window.open('https://instagram.com', '_blank');
+    window.open('https://instagram.com/lorenzo.c.l', '_blank');
   });
 
   // 2) Suggestions
