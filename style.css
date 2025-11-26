@@ -1,116 +1,89 @@
-/* General */
-* { box-sizing: border-box; }
 body {
-  margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
-  background: #f5f6fa;
-  color: #222;
-  -webkit-font-smoothing:antialiased;
-  -moz-osx-font-smoothing:grayscale;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background: #f0f0f0;
+    text-align: center;
 }
 
-/* Dark mode */
-body.dark-mode {
-  background: #121212;
-  color: #eee;
+/* Banner */
+.header-banner {
+    background: linear-gradient(90deg, #6a0dad, #9b4dff);
+    color: white;
+    padding: 20px;
 }
 
-/* Header */
-.top-banner {
-  background: linear-gradient(90deg,#6b2fa3,#9b59b6);
-  color: #fff;
-  text-align: center;
-  padding: 14px 12px;
+/* Grid */
+.button-list {
+    list-style: none;
+    padding: 20px;
+    display: grid;
+    gap: 20px;
 }
 
-/* Cards */
-.cards-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
-  gap: 20px;
-  padding: 18px;
-  max-width: 1100px;
-  margin: 0 auto;
-}
-.card { text-align:center; }
-.card img { width:100%; max-width:220px; border-radius:12px; transition: transform .18s, box-shadow .18s; cursor:pointer; }
-.card img:hover { transform: translateY(-6px); box-shadow: 0 6px 18px rgba(0,0,0,.15); }
-
-/* Bottom toolbar - fixed */
-.bottom-banner {
-  position: fixed;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: 72px;
-  background: #6b2fa3;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  z-index: 100;
-  padding: 6px 8px;
-}
-.icon-btn {
-  background: transparent;
-  border: none;
-  padding: 6px;
-  display: inline-flex;
-  align-items:center;
-  justify-content:center;
-}
-.icon-btn img { width: 44px; height: 44px; display:block; }
-
-/* Popup menu (positioned above toolbar) */
-.popup-menu, .install-menu {
-  display: none;
-  position: absolute;
-  bottom: 80px; /* base offset above toolbar */
-  left: 50%;
-  transform: translateX(-50%);
-  min-width: 260px;
-  background: #fff;
-  border-radius: 10px;
-  padding: 12px;
-  box-shadow: 0 8px 26px rgba(0,0,0,.18);
-  z-index: 200;
-}
-body.dark-mode .popup-menu, body.dark-mode .install-menu {
-  background: #222;
-  color: #fff;
+.button-list li {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-/* Overlay and message box */
-.overlay {
-  display: none;
-  position: fixed; inset:0;
-  background: rgba(0,0,0,0.45);
-  z-index: 150;
+.image-btn img {
+    width: 140px;
+    height: 140px;
+    border-radius: 20px;
+    object-fit: cover;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
-.popup-box {
-  display:none;
-  position: fixed;
-  left:50%; top:50%;
-  transform: translate(-50%,-50%);
-  background: #fff;
-  padding: 16px;
-  border-radius: 8px;
-  box-shadow: 0 10px 30px rgba(0,0,0,.2);
-  z-index: 220;
+
+/* Footer bar */
+.footer-bar {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background: #fff;
+    border-top: 2px solid #ccc;
+    display: flex;
+    justify-content: space-around;
+    padding: 10px 0;
 }
-body.dark-mode .popup-box { background:#222; color:#fff; }
 
-/* Inputs & buttons */
-input[type="text"] { width: 100%; padding:8px; border-radius:6px; border:1px solid #ccc; margin-bottom:8px; }
-button { cursor:pointer; padding:8px 12px; border-radius:8px; border:none; background:#6b2fa3; color:#fff; }
-button.close-btn { background:#555; }
+.icon-btn img {
+    width: 45px;
+}
 
-/* Developer page basics */
-#protected-content { padding: 12px; max-width: 900px; margin: 0 auto; }
-#analytics-list, #suggestions-list { list-style:none; padding-left:0; }
+/* Popups */
+.popup {
+    position: fixed;
+    left: 0; right: 0;
+    bottom: 80px;
+    margin: auto;
+    width: 260px;
+    background: white;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+}
 
-/* Responsive small tweaks */
-@media (max-width:420px) {
-  .icon-btn img { width:36px; height:36px; }
-  .bottom-banner { height:64px; }
-  .popup-menu { min-width: 220px; bottom: 74px; }
+.hidden {
+    display: none;
+}
+
+.popup-button {
+    width: 100%;
+    margin: 5px 0;
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+    background: #6a0dad;
+    color: white;
+    font-size: 16px;
+}
+
+.close-button {
+    width: 100%;
+    margin-top: 10px;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    background: #ccc;
 }
