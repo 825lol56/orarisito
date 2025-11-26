@@ -8,53 +8,85 @@ document.addEventListener("DOMContentLoaded", () => {
   const loginMenu = document.getElementById("login-menu");
   const loginBtn = document.getElementById("login-btn");
 
-  // Hide developer button by default
-  devBtn.style.display = "none";
+  // Ensure developer button is hidden by default (HTML sets display:none, but enforce here)
+  devBtn.style.display = devBtn.style.display || "none";
 
-  // Show developer button if previously logged in
-  if(localStorage.getItem("developer") === "true") {
-    devBtn.style.display = "inline-block";
+  // Render Instagram button immediately (no flash)
+  function renderInstagramButton() {
+    // If already developer, show dev button and keep instagram available
+    if (localStorage.getItem("developer") === "true") {
+      devBtn.style.display = "inline-flex";
+      devBtn.onclick = () => window.location.href = "developer.html";
+    } else {
+      devBtn.style.display = "none";
+    }
+
+    // Populate Instagram button and click behavior
+    instagramBtn.innerHTML = '<img src="icons/instagram.png" alt="Instagram">';
+    instagramBtn.onclick = () => window.open("https://instagram.com/","_blank");
   }
 
-  // Instagram button always visible
-  instagramBtn.onclick = () => window.open("https://instagram.com/yourpage","_blank");
+  renderInstagramButton();
 
-  // Timetable click tracking
+  // Timetable click tracking (increments analytics doc counter)
   document.querySelectorAll(".cards-container a").forEach(a => {
     a.addEventListener("click", async () => {
       const id = a.dataset.id;
-      const ref = doc(db,"analytics",id);
-      const snap = await getDoc(ref);
-      if(!snap.exists()) await setDoc(ref,{count:1});
-      else await updateDoc(ref,{count:increment(1)});
+      try {
+        const ref = doc(db, "analytics", id);
+        const snap = await getDoc(ref);
+        if (!snap.exists()) {
+          await setDoc(ref, { count: 1 });
+        } else {
+          await updateDoc(ref, { count: increment(1) });
+        }
+      } catch (err) {
+        // silent fail (offline or misconfigured); optional: console.error(err);
+      }
     });
   });
 
-  // Login menu toggle
+  // Login menu: toggle and position above icon
   function toggleLoginMenu() {
-    if(loginMenu.style.display === "block") { 
-      loginMenu.style.display = "none"; 
-      return; 
+    if (loginMenu.style.display === "block") {
+      loginMenu.style.display = "none";
+      loginMenu.setAttribute("aria-hidden", "true");
+      return;
     }
-    const rect = loginIcon.getBoundingClientRect();
-    loginMenu.style.left = `${rect.left + rect.width/2}px`;
-    loginMenu.style.bottom = `${window.innerHeight - rect.top + 10}px`;
-    loginMenu.style.transform = "translateX(-50%)";
+    positionLoginMenu();
     loginMenu.style.display = "block";
+    loginMenu.setAttribute("aria-hidden", "false");
   }
+
+  function positionLoginMenu() {
+    const rect = loginIcon.getBoundingClientRect();
+    const left = rect.left + rect.width / 2;
+    // bottom: distance from bottom of viewport; compute so menu sits above icon
+    const bottom = window.innerHeight - rect.top + 10;
+    loginMenu.style.left = `${left}px`;
+    loginMenu.style.bottom = `${bottom}px`;
+    loginMenu.style.transform = "translateX(-50%)";
+  }
+
   loginIcon.addEventListener("click", toggleLoginMenu);
+  window.toggleLoginMenu = toggleLoginMenu;
 
   // Login handler
   loginBtn.addEventListener("click", () => {
     const code = document.getElementById("login-code").value.trim();
-    if(code === "lrnzluckystrike") {
-      localStorage.setItem("developer","true");
-      devBtn.style.display = "inline-block"; // Show dev icon
-      loginMenu.style.display = "none";       // Close login menu
-    } else alert("Codice non valido.");
+    if (code === "lrnzluckystrike") {
+      localStorage.setItem("developer", "true");
+      // show developer button
+      devBtn.style.display = "inline-flex";
+      devBtn.onclick = () => window.location.href = "developer.html";
+      // close menu
+      loginMenu.style.display = "none";
+    } else {
+      alert("Codice non valido.");
+    }
   });
 
-  // Dark/Light Mode
+  // Dark/light toggle
   const themeToggleBtn = document.getElementById("theme-toggle");
   themeToggleBtn.addEventListener("click", () => {
     document.body.classList.toggle("dark-mode");
@@ -62,20 +94,24 @@ document.addEventListener("DOMContentLoaded", () => {
     img.src = document.body.classList.contains("dark-mode") ? "icons/darkmode.png" : "icons/lightmode.png";
   });
 
-  // Suggestions popup
+  // Simple popup helpers
   window.openSuggestionsPopup = () => showPopup("Suggerimenti disponibili presto.");
-  function showPopup(text){
+  function showPopup(text) {
     document.getElementById("popup-text").innerText = text;
     document.getElementById("popup-overlay").style.display = "block";
+    document.getElementById("popup-overlay").setAttribute("aria-hidden", "false");
     document.getElementById("popup-box").style.display = "block";
+    document.getElementById("popup-box").setAttribute("aria-hidden", "false");
   }
-  function closePopup(){
+  function closePopup() {
     document.getElementById("popup-overlay").style.display = "none";
+    document.getElementById("popup-overlay").setAttribute("aria-hidden", "true");
     document.getElementById("popup-box").style.display = "none";
+    document.getElementById("popup-box").setAttribute("aria-hidden", "true");
   }
   window.closePopup = closePopup;
 
-  // Install menu
+  // Install menu / beforeinstallprompt
   let deferredPrompt = null;
   window.addEventListener("beforeinstallprompt", (e) => {
     e.preventDefault();
@@ -87,8 +123,17 @@ document.addEventListener("DOMContentLoaded", () => {
   };
   window.closeInstallMenu = () => document.getElementById("install-menu").style.display = "none";
   window.installAndroid = () => {
-    if(deferredPrompt){ deferredPrompt.prompt(); deferredPrompt = null; }
-    else showPopup("Installazione non disponibile su questo dispositivo.");
+    if (deferredPrompt) {
+      deferredPrompt.prompt();
+      deferredPrompt = null;
+    } else {
+      showPopup("Installazione non disponibile su questo dispositivo.");
+    }
   };
   window.showIOSInstructions = () => showPopup("Su iOS: premi Condividi → 'Aggiungi alla schermata Home'");
+
+  // reposition login menu on resize to keep it above icon
+  window.addEventListener("resize", () => {
+    if (document.getElementById("login-menu").style.display === "block") positionLoginMenu();
+  });
 });

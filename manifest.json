@@ -1,15 +1,15 @@
 {
-    "name": "Orari Trasporti",
-    "short_name": "Orari",
-    "start_url": "/",
-    "display": "standalone",
-    "background_color": "#f6f4fb",
-    "theme_color": "#6b2fa3",
-    "icons": [
-        {
-            "src": "icons/favicon.png",
-            "sizes": "512x512",
-            "type": "image/png"
-        }
-    ]
+  "name": "Orari Trasporti",
+  "short_name": "Orari",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f5f6fa",
+  "theme_color": "#6b2fa3",
+  "icons": [
+    {
+      "src": "icons/favicon.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
 }

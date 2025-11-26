@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>Orari Trasporti</title>
 <link rel="stylesheet" href="style.css">
 <link rel="icon" type="image/png" href="icons/favicon.png">
@@ -51,53 +51,53 @@
   </div>
 </main>
 
-<footer class="bottom-banner">
-  <!-- Instagram always visible -->
-  <button class="icon-btn" href="https://instagram.com/lorenzo.c.l" target="_blank" id="btn-instagram">
-    <img src="icons/instagram.png" alt="Instagram">
-  </button>
+<footer class="bottom-banner" role="navigation" aria-label="Barra strumenti">
+  <!-- Instagram button: JS populates this on load to avoid flash -->
+  <button class="icon-btn" id="btn-instagram" aria-label="Instagram"></button>
 
-  <!-- Developer icon appears only after login -->
-  <button class="icon-btn" id="btn-dev" style="display:none">
+  <!-- Developer button: hidden by default; shown only after login -->
+  <button class="icon-btn" id="btn-dev" style="display:none" aria-label="Developer Panel">
     <img src="icons/devpanel.png" alt="Developer Panel">
   </button>
 
-  <button class="icon-btn" onclick="openSuggestionsPopup()">
+  <button class="icon-btn" id="btn-suggestions" title="Suggerimenti" onclick="openSuggestionsPopup()">
     <img src="icons/suggestions.png" alt="Suggerimenti">
   </button>
 
-  <button class="icon-btn" id="login-icon">
+  <button class="icon-btn" id="login-icon" title="Accedi">
     <img src="icons/login.png" alt="Login">
   </button>
 
-  <button class="icon-btn placeholder-icon" id="theme-toggle">
+  <button class="icon-btn placeholder-icon" id="theme-toggle" title="Tema">
     <img src="icons/lightmode.png" alt="Tema">
   </button>
 
-  <button class="icon-btn" onclick="toggleInstallMenu()">
+  <button class="icon-btn" id="btn-install" title="Aggiungi alla Home" onclick="toggleInstallMenu()">
     <img src="icons/install.png" alt="Aggiungi Shortcut">
   </button>
 </footer>
 
-<!-- Login Menu -->
-<div id="login-menu" class="popup-menu">
+<!-- Login menu (popup above login icon) -->
+<div id="login-menu" class="popup-menu" aria-hidden="true">
   <input type="text" id="login-code" placeholder="Inserisci codice">
-  <button id="login-btn">Accedi</button>
-  <button class="close-btn" onclick="toggleLoginMenu()">Chiudi</button>
+  <div style="display:flex; gap:8px; justify-content:center;">
+    <button id="login-btn">Accedi</button>
+    <button class="close-btn" onclick="toggleLoginMenu()">Chiudi</button>
+  </div>
 </div>
 
-<!-- Popup Overlay -->
-<div id="popup-overlay" class="overlay" onclick="closePopup()"></div>
-<div id="popup-box" class="popup-box">
+<!-- Popup overlay + popup box used for messages -->
+<div id="popup-overlay" class="overlay" onclick="closePopup()" aria-hidden="true"></div>
+<div id="popup-box" class="popup-box" aria-hidden="true">
   <span id="popup-text"></span>
-  <button class="close-btn" onclick="closePopup()">Chiudi</button>
+  <div style="text-align:center; margin-top:10px;"><button class="close-btn" onclick="closePopup()">Chiudi</button></div>
 </div>
 
-<!-- Install Menu -->
-<div id="install-menu" class="install-menu">
+<!-- Install menu (Android / iOS) -->
+<div id="install-menu" class="install-menu" aria-hidden="true">
   <button onclick="installAndroid()">📱 Android – Aggiungi a Home</button>
   <button onclick="showIOSInstructions()">🍏 iOS – Istruzioni</button>
-  <button class="close-btn" onclick="closeInstallMenu()">Chiudi</button>
+  <div style="text-align:center; margin-top:6px;"><button class="close-btn" onclick="closeInstallMenu()">Chiudi</button></div>
 </div>
 
 <script type="module" src="firebase-init.js"></script>

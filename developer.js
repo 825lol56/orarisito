@@ -1,37 +1,48 @@
-import { db, getDoc, doc, getDocs, collection } from './firebase-init.js';
+import { db, doc, getDoc, collection, getDocs } from './firebase-init.js';
 
-// Protect developer page
-if(localStorage.getItem("developer") !== "true") {
-  document.body.innerHTML = "<h1>Accesso negato</h1><p>Devi essere sviluppatore per accedere a questa pagina.</p>";
-  throw new Error("Accesso negato");
-}
+document.addEventListener("DOMContentLoaded", async () => {
+  // protect developer page using client-side check
+  if (localStorage.getItem("developer") !== "true") {
+    document.getElementById("protected-content").style.display = "none";
+    document.getElementById("access-denied").style.display = "block";
+    return;
+  }
 
-// Load analytics
-async function loadAnalytics() {
+  // show protected area
+  document.getElementById("protected-content").style.display = "block";
+
+  // load analytics counts
   const analyticsList = document.getElementById("analytics-list");
   analyticsList.innerHTML = "";
-  const ids = ["treniNapSorr","treniSorrNap","busVico","busNotturno"];
-  for(const id of ids){
-    const ref = doc(db,"analytics",id);
-    const snap = await getDoc(ref);
-    const count = snap.exists() ? snap.data().count : 0;
-    const li = document.createElement("li");
-    li.textContent = `${id}: ${count}`;
-    analyticsList.appendChild(li);
+  const ids = ["treniNapSorr", "treniSorrNap", "busVico", "busNotturno"];
+  for (const id of ids) {
+    try {
+      const ref = doc(db, "analytics", id);
+      const snap = await getDoc(ref);
+      const count = snap.exists() ? (snap.data().count || 0) : 0;
+      const li = document.createElement("li");
+      li.textContent = `${id}: ${count}`;
+      analyticsList.appendChild(li);
+    } catch (err) {
+      const li = document.createElement("li");
+      li.textContent = `${id}: (error)`;
+      analyticsList.appendChild(li);
+    }
   }
-}
 
-// Load suggestions
-async function loadSuggestions() {
+  // load suggestions
   const suggestionsList = document.getElementById("suggestions-list");
   suggestionsList.innerHTML = "";
-  const snaps = await getDocs(collection(db,"suggestions"));
-  snaps.forEach(doc => {
+  try {
+    const snaps = await getDocs(collection(db, "suggestions"));
+    snaps.forEach(docSnap => {
+      const li = document.createElement("li");
+      li.textContent = `[${docSnap.id}] ${docSnap.data().text || ""}`;
+      suggestionsList.appendChild(li);
+    });
+  } catch (err) {
     const li = document.createElement("li");
-    li.textContent = `[${doc.id}] ${doc.data().text}`;
+    li.textContent = "(errore caricamento suggestions)";
     suggestionsList.appendChild(li);
-  });
-}
-
-loadAnalytics();
-loadSuggestions();
+  }
+});

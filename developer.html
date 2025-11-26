@@ -1,28 +1,34 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>Developer Panel</title>
 <link rel="stylesheet" href="style.css">
-<script type="module" src="firebase-init.js"></script>
-<script type="module" src="developer.js"></script>
 </head>
 <body>
+
 <h1>Developer Panel</h1>
-<section>
-  <h2>Analytics Timetable Clicks</h2>
-  <ul id="analytics-list"></ul>
-</section>
 
-<section>
-  <h2>Suggestions Inbox</h2>
-  <ul id="suggestions-list"></ul>
-</section>
+<div id="protected-content" style="display:none;">
+  <section>
+    <h2>Analytics click</h2>
+    <ul id="analytics-list"></ul>
+  </section>
 
-<section>
-  <h2>Other Useful Info</h2>
-  <p>Extra tools here.</p>
-</section>
+  <section>
+    <h2>Suggestions Inbox</h2>
+    <ul id="suggestions-list"></ul>
+  </section>
+</div>
+
+<div id="access-denied" style="display:none;">
+  <h2>Accesso negato</h2>
+  <p>Devi essere autenticato come sviluppatore per vedere questa pagina.</p>
+  <p><a href="index.html">Torna al sito</a></p>
+</div>
+
+<script type="module" src="firebase-init.js"></script>
+<script type="module" src="developer.js"></script>
 </body>
 </html>
