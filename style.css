@@ -5,7 +5,6 @@ body {
   background: #f5f6fa;
   color: #333;
 }
-
 .dark-mode { background:#1e1e1e; color:#f5f6fa; }
 
 /* Top Banner */
@@ -46,17 +45,13 @@ body {
   background: #6b2fa3;
   z-index: 100;
 }
-.bottom-banner .icon-btn img {
-  width: 40px;
-  height: 40px;
-  cursor: pointer;
-}
+.bottom-banner .icon-btn img { width: 40px; height: 40px; cursor: pointer; }
 
 /* Popup Menus */
 .popup-menu, .install-menu {
   display: none;
   position: absolute;
-  bottom: 60px; /* above toolbar */
+  bottom: 60px;
   left: 50%;
   transform: translateX(-50%);
   background: white;

@@ -7,14 +7,17 @@ document.addEventListener("DOMContentLoaded", () => {
   const loginMenu = document.getElementById("login-menu");
   const loginBtn = document.getElementById("login-btn");
 
-  // Decide icon before rendering to prevent flash
-  if(localStorage.getItem("developer")==="true") {
-    instagramBtn.innerHTML=`<img src="icons/devpanel.png" alt="Developer Panel">`;
-    instagramBtn.onclick = ()=>window.location.href="developer.html";
-  } else {
-    instagramBtn.innerHTML=`<img src="icons/instagram.png" alt="Instagram">`;
+  // Render Instagram/Dev button immediately
+  function renderInstagramButton() {
+    if(localStorage.getItem("developer")==="true") {
+      instagramBtn.innerHTML='<img src="icons/devpanel.png" alt="Developer Panel">';
+      instagramBtn.onclick = ()=>window.location.href="developer.html";
+    } else {
+      instagramBtn.innerHTML='<img src="icons/instagram.png" alt="Instagram">';
+      instagramBtn.onclick = ()=>window.open("https://instagram.com/yourpage","_blank");
+    }
   }
-  instagramBtn.querySelector("img").style.visibility="visible";
+  renderInstagramButton();
 
   // Timetable clicks
   document.querySelectorAll(".cards-container a").forEach(a => {
@@ -29,13 +32,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Login Menu
   function toggleLoginMenu() {
-    loginMenu.style.display = loginMenu.style.display === "block" ? "none" : "block";
+    if(loginMenu.style.display==="block") { loginMenu.style.display="none"; return; }
     positionLoginMenu();
+    loginMenu.style.display="block";
   }
   function positionLoginMenu() {
     const rect = loginIcon.getBoundingClientRect();
-    loginMenu.style.bottom = `${window.innerHeight - rect.top + 10}px`;
     loginMenu.style.left = `${rect.left + rect.width/2}px`;
+    loginMenu.style.bottom = `${window.innerHeight - rect.top + 10}px`;
     loginMenu.style.transform="translateX(-50%)";
   }
   loginIcon.addEventListener("click", toggleLoginMenu);
@@ -44,9 +48,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const code = document.getElementById("login-code").value.trim();
     if(code==="lrnzluckystrike") {
       localStorage.setItem("developer","true");
-      toggleLoginMenu();
-      instagramBtn.innerHTML=`<img src="icons/devpanel.png" alt="Developer Panel">`;
-      instagramBtn.onclick=()=>window.location.href="developer.html";
+      loginMenu.style.display="none";
+      renderInstagramButton();
     } else alert("Codice non valido.");
   });
 
