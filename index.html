@@ -52,16 +52,28 @@
 </main>
 
 <footer class="bottom-banner">
-  <button class="icon-btn" id="btn-instagram"></button>
+  <!-- Instagram always visible -->
+  <button class="icon-btn" id="btn-instagram">
+    <img src="icons/instagram.png" alt="Instagram">
+  </button>
+
+  <!-- Developer icon appears only after login -->
+  <button class="icon-btn" id="btn-dev" style="display:none">
+    <img src="icons/devpanel.png" alt="Developer Panel">
+  </button>
+
   <button class="icon-btn" onclick="openSuggestionsPopup()">
     <img src="icons/suggestions.png" alt="Suggerimenti">
   </button>
+
   <button class="icon-btn" id="login-icon">
     <img src="icons/login.png" alt="Login">
   </button>
+
   <button class="icon-btn placeholder-icon" id="theme-toggle">
     <img src="icons/lightmode.png" alt="Tema">
   </button>
+
   <button class="icon-btn" onclick="toggleInstallMenu()">
     <img src="icons/install.png" alt="Aggiungi Shortcut">
   </button>

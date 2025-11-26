@@ -3,23 +3,15 @@ import { db, doc, getDoc, setDoc, updateDoc, increment } from './firebase-init.j
 document.addEventListener("DOMContentLoaded", () => {
 
   const instagramBtn = document.getElementById("btn-instagram");
+  const devBtn = document.getElementById("btn-dev");
   const loginIcon = document.getElementById("login-icon");
   const loginMenu = document.getElementById("login-menu");
   const loginBtn = document.getElementById("login-btn");
 
-  // Render Instagram/Dev button immediately
-  function renderInstagramButton() {
-    if(localStorage.getItem("developer")==="true") {
-      instagramBtn.innerHTML='<img src="icons/devpanel.png" alt="Developer Panel">';
-      instagramBtn.onclick = ()=>window.location.href="developer.html";
-    } else {
-      instagramBtn.innerHTML='<img src="icons/instagram.png" alt="Instagram">';
-      instagramBtn.onclick = ()=>window.open("https://instagram.com/yourpage","_blank");
-    }
-  }
-  renderInstagramButton();
+  // Show developer button only if logged in
+  if(localStorage.getItem("developer")==="true") devBtn.style.display="inline-block";
 
-  // Timetable clicks
+  // Timetable click tracking
   document.querySelectorAll(".cards-container a").forEach(a => {
     a.addEventListener("click", async () => {
       const id = a.dataset.id;
@@ -30,17 +22,14 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // Login Menu
+  // Login menu toggle
   function toggleLoginMenu() {
     if(loginMenu.style.display==="block") { loginMenu.style.display="none"; return; }
-    positionLoginMenu();
-    loginMenu.style.display="block";
-  }
-  function positionLoginMenu() {
     const rect = loginIcon.getBoundingClientRect();
     loginMenu.style.left = `${rect.left + rect.width/2}px`;
     loginMenu.style.bottom = `${window.innerHeight - rect.top + 10}px`;
-    loginMenu.style.transform="translateX(-50%)";
+    loginMenu.style.transform = "translateX(-50%)";
+    loginMenu.style.display="block";
   }
   loginIcon.addEventListener("click", toggleLoginMenu);
 
@@ -48,8 +37,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const code = document.getElementById("login-code").value.trim();
     if(code==="lrnzluckystrike") {
       localStorage.setItem("developer","true");
+      devBtn.style.display="inline-block";
       loginMenu.style.display="none";
-      renderInstagramButton();
     } else alert("Codice non valido.");
   });
 
